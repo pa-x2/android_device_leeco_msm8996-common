@@ -27,6 +27,10 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
     $(LOCAL_PATH)/overlay-lineage/lineage-sdk \
     $(LOCAL_PATH)/overlay/packages/apps/Snap
+PRODUCT_SOONG_NAMESPACES += \
+    hardware/qcom/audio \
+    hardware/qcom/display \
+    hardware/qcom/media 
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -76,6 +80,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl \
     $(LOCAL_PATH)/keylayout/qpnp_pon.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/qpnp_pon.kl
 
+TARGET_USES_HARDWARE_KEYS := true
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
 
@@ -87,9 +92,18 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-service \
     android.hardware.audio@5.0-impl:32 \
     android.hardware.audio.effect@5.0-impl:32 \
+    android.hardware.soundtrigger@2.2-impl \
     android.hardware.bluetooth.audio@2.0-impl \
+    android.hardware.bluetooth@1.0-impl-qti \
     audio.a2dp.default \
     audio.bluetooth.default \
+    audio.bluetooth_qti.default \
+    vendor.qti.hardware.bluetooth_audio@2.0 \
+    com.qualcomm.qti.bluetooth_audio@1.0 \
+    libbluetooth_audio_session \
+    libqti_vndfwk_detect \
+    libvndfwk_detect_jni \
+    android.hardware.bluetooth@1.0-service-qti \
     audio.primary.msm8996 \
     audio.r_submix.default \
     audio.usb.default \
@@ -171,7 +185,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.composer@2.1-impl:64 \
     android.hardware.graphics.composer@2.1-service \
-    android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.graphics.mapper@2.0-impl-2.1 \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
     copybit.msm8996 \
@@ -261,12 +275,12 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.leeco_8996
 
 # Lineage hardware
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.leeco_8996
+#PRODUCT_PACKAGES += \
+#    vendor.lineage.touch@1.0-service.leeco_8996
 
 # LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-sdm
+#PRODUCT_PACKAGES += \
+#    vendor.lineage.livedisplay@2.0-service-sdm
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -391,8 +405,8 @@ PRODUCT_PACKAGES += \
     qti_telephony_utils.xml \
     telephony-ext
 
-PRODUCT_BOOT_JARS += \
-    telephony-ext
+#PRODUCT_BOOT_JARS += \
+#   telephony-ext
 
 # TextClassifier smart selection model files
 PRODUCT_PACKAGES += \
@@ -400,16 +414,16 @@ PRODUCT_PACKAGES += \
 
 # Thermal
 PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.0-impl:64 \
-    android.hardware.thermal@1.0-service \
+    android.hardware.thermal@2.0-impl:64 \
+    android.hardware.thermal@2.0-service \
     thermal.msm8996
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
 
 # Trust HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
+#PRODUCT_PACKAGES += \
+#    vendor.lineage.trust@1.0-service
 
 # USB
 PRODUCT_PACKAGES += \
@@ -429,10 +443,10 @@ PRODUCT_PACKAGES += \
     vndk_package
 
 # VR
-PRODUCT_PACKAGES += \
-    android.hardware.vr@1.0-impl:64 \
-    android.hardware.vr@1.0-service \
-    vr.msm8996
+#PRODUCT_PACKAGES += \
+#    android.hardware.vr@1.0-impl:64 \
+#    android.hardware.vr@1.0-service \
+#    vr.msm8996
 
 # WiFi
 PRODUCT_PACKAGES += \

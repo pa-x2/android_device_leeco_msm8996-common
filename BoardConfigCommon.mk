@@ -18,9 +18,8 @@
 PLATFORM_PATH := device/leeco/msm8996-common
 
 TARGET_SPECIFIC_HEADER_PATH += $(PLATFORM_PATH)/include
-
+TARGET_USE_QTI_BT_STACK := true
 BOARD_VENDOR := leeco
-
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := msm8996
 TARGET_NO_BOOTLOADER := true
@@ -48,6 +47,7 @@ TARGET_USES_64_BIT_BINDER := true
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff
 BOARD_KERNEL_CMDLINE += androidboot.configfs=true
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_CMDLINE += loop.max_part=7
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
@@ -116,7 +116,7 @@ TARGET_USES_ION := true
 TARGET_USES_GRALLOC1 := true
 TARGET_USES_HWC2 := true
 TARGET_USES_OVERLAY := true
-
+TARGET_SCREEN_DENSITY := 430
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 
@@ -206,7 +206,8 @@ TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 VENDOR_SECURITY_PATCH := 2016-10-01
 
 # SELinux
-include device/qcom/sepolicy-legacy-um/sepolicy.mk
+TARGET_USES_QCOM_LEGACY_UM_SEPOLICY := true
+#TARGET_USES_PREBUILT_VENDOR_SEPOLICY := true
 
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/vendor
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(PLATFORM_PATH)/sepolicy/private

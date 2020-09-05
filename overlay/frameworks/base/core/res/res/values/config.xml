@@ -485,6 +485,9 @@
     <!--  Whether Multiuser UI should be shown -->
     <bool name="config_enableMultiUserUI">true</bool>
 
+    <!-- Whether or not swipe up gesture's opt-in setting is available on this device. -->
+    <bool name="config_swipe_up_gesture_setting_available">false</bool>
+
     <!--  Define Google play service package for FRP-->
     <string name="config_persistentDataPackageName" translatable="false">com.google.android.gms</string>
 </resources>
