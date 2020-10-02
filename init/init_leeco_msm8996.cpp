@@ -40,7 +40,7 @@
 #include "vendor_init.h"
 #include "property_service.h"
 
-<<<<<<< HEAD
+
 char const *heapstartsize;
 char const *heapgrowthlimit;
 char const *heapsize;
@@ -48,12 +48,10 @@ char const *heapminfree;
 char const *heapmaxfree;
 char const *heaptargetutilization;
 
-using android::init::property_set;
-=======
+
 int property_set(const char *key, const char *value) {
     return __system_property_set(key, value);
 }
->>>>>>> b00b78d5... msm8996-common: adapt libinit to Android 11
 
 void property_override(const std::string& name, const std::string& value)
 {
